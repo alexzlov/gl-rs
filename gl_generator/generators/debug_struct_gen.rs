@@ -272,7 +272,7 @@ where
                                          .iter()
                                          .find(|cmd| cmd.proto.ident == "GetError")
                                          .is_some() {
-                          format!(r#"match __gl_imports::mem::transmute::<_, extern "system" fn() -> u32>
+                          format!(r#"match __gl_imports::mem::transmute::<_, extern "system" fn({typed_params}) -> u32>
                     (self.GetError.f)() {{ 0 => (), r => println!("[OpenGL] ^ GL error triggered: {{}}", r) }}"#)
                       } else {
                           format!("")
